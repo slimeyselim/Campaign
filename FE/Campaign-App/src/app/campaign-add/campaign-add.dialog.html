@@ -1,0 +1,66 @@
+<h1 mat-dialog-title>Add Campaign</h1>
+<form [formGroup]="addForm" (ngSubmit)="save()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="Name" placeholder="Campaign Name" />
+      <mat-error *ngIf="name.invalid && name.touched">Name is Required</mat-error>
+    </mat-form-field>
+
+  </div>
+  <div>
+    <label id="Type">Type</label>
+    <mat-radio-group formControlName="Type" aria-label="Type">
+      <mat-radio-button value="1">TV</mat-radio-button>
+      <mat-radio-button value="2">Mobile</mat-radio-button>
+      <mat-error *ngIf="type.invalid && type.touched">Type is Required</mat-error>
+    </mat-radio-group>
+  </div>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Client</mat-label>
+      <mat-select formControlName="ClientId">
+        <mat-option *ngFor="let client of clientNames" [value]="client.Id">
+          {{ client.ClientName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="clientId.invalid && clientId.touched">Client is Required</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        formControlName="StartDate"
+        placeholder="Start Date"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+      <mat-error *ngIf="startDate.invalid && startDate.touched">Start Date is Required</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        [min]="addForm.value.StartDate"
+        formControlName="EndDate"
+        placeholder="End Date"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+      <mat-error *ngIf="endDate.invalid && endDate.touched">End Date is Required</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No</button>
+    <button mat-button [disabled]="addForm.invalid" (click)="save()">Yes</button>
+  </div>
+</form>

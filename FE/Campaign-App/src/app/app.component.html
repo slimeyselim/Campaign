@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>{{ title }}</h1>
+
+  <button (click)="openAddDialog()" mat-button>Add Campaign <mat-icon>add_circle_outline</mat-icon></button>
+<table style="width:80%; margin: 0 auto">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Client</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let campaign of campaignData">
+        <td>{{campaign.Name}}</td>
+        <td>{{campaign.Type}}</td>
+        <td>{{campaign.ClientId}}</td>
+        <td>{{campaign.StartDate | date }}</td>
+        <td>{{campaign.EndDate | date }}</td>
+        <td><button mat-button (click)="openEditDialog(campaign.Id, campaign.Name)">Edit <mat-icon>create</mat-icon></button><button mat-button (click)="openDeleteDialog(campaign.Id)">Delete <mat-icon>cancel</mat-icon></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

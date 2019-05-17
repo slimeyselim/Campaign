@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Campaign Edit</h1>
+<div mat-dialog-content>
+  <p>Enter Campaign Name</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.Name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+</div>

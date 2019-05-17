@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+label{
+  margin-right: 16px;
+}
+
+.mat-form-field-wrapper{
+  margin: 4px;
+}
